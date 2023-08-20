@@ -1,0 +1,26 @@
+{
+  "name": "quarta-feira-bot",
+  "version": "1.0.0",
+  "licence": "GPL-3.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-standard-with-typescript": "^38.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@atproto/api": "^0.6.4",
+    "dotenv": "^16.3.1"
+  }
+}
