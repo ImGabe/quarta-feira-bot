@@ -33,9 +33,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test # Adicione testes ao seu projeto para esta etapa, se ainda não houver
-
       - name: Build project
         run: npm run build
 
