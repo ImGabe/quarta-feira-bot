@@ -1,0 +1,44 @@
+name: "Code Verification"
+
+# Executa o workflow em pushes e pull requests para a branch principal
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc" # Certifique-se de ter o arquivo .nvmrc configurado com a versão correta
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-cache-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint # Adicione um script de lint no seu package.json para garantir que ele funcione corretamente
+
+      - name: Run tests
+        run: npm test # Adicione testes ao seu projeto para esta etapa, se ainda não houver
+
+      - name: Build project
+        run: npm run build
+
